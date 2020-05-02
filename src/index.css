@@ -5,9 +5,29 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 13px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.hackerClone table{
+  text-align: left;
+}
+.hackerClone table tr th {
+  background: orange;
+  color: white;
+}
+.hackerClone table tr:nth-child(odd){
+  background-color: #f6f6f6;
+}
+.prev-next {
+  float: right;
+  color: orange;
+  font-weight: 600;
+}
+span.prevoius {
+  border-right: 2px solid;
+  padding-right: 5px;
 }

@@ -15,7 +15,7 @@ class MyBlog extends Component {
         this.upVote =  this.upVote.bind(this);
     }
     upVote(objId){
-       var newvotes =  this.state.localdatawithvote.map(    
+       var newvotes =  this.state.localdatawithvote && this.state.localdatawithvote.map(    
         voteObj => { 
                 if(voteObj.objectID === objId ){
                    voteObj.vote ++;
@@ -78,7 +78,9 @@ class MyBlog extends Component {
         this.setState({
                 localdatawithvote : JSON.parse( localStorage.getItem('data'))
         })
+        console.log('localdatawithvote', this.state.localdatawithvote)
     }
+    else{console.log('datat not present')}
     
     
     }
@@ -123,6 +125,18 @@ class MyBlog extends Component {
 
     render() {
        var localData = this.state.localdatawithvote;
+     
+       {
+           localData && localData.map(hitdatt=>
+               this.state.vote.map(vote=>
+                  { if(hitdatt.objectID === vote.id)
+                    var locavote = vote.vote;
+                    console.log('local vote from vote array',locavote)
+                }
+               )
+           )
+       }
+      
        let splitUrl ='';
         return (
             <div className=" container hackerClone">
@@ -148,7 +162,14 @@ class MyBlog extends Component {
                         <td>{hitdata.num_comments} </td>
                         <td>
                         {
+                            // (this.state.vote.find(vote => (hitdata.objectID === vote.id)?
+                            // <p> {vote.vote}</p>:0
+                            // )
+                            
+                            // )
                             hitdata.vote
+                            
+                            
                         }
                         </td>
                         <td><p onClick={(e)=>this.upVote(hitdata.objectID)}>upvote</p></td>
